@@ -112,7 +112,7 @@
             "pin": "B5"
         },
         "serial": {
-            "pin": "D2"
+            "pin": "B0" // D2
         },
         "transport": {
             "sync": {
