@@ -17,7 +17,7 @@
 #pragma once
 
 // #define RGBLED_SPLIT { 6, 6 }
-#define FORCE_NKRO
+#define NKRO_DEFAULT_ON true
 #define STENO_COMBINEDMAP
 #define MIDI_ADVANCED
 #define SERIAL_DEBUG
