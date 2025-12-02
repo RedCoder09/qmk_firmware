@@ -1,4 +1,3 @@
-//VALID_POINTING_DEVICE_CONFIGURATIONS := trackball cirque40 cirque35 cirque35_cirque35 cirque40_cirque40 trackball_trackball trackball_cirque35 cirque35_trackball trackball_cirque40 cirque40_trackball trackpoint trackpoint_trackball trackball_trackpoint trackpoint_cirque35 cirque35_trackpoint trackpoint_cirque40 cirque40_trackpoint
 NKRO_ENABLE = yes
 MIDI_ENABLE = yes
 STENO_ENABLE = yes
@@ -15,7 +14,3 @@ RGB_MATRIX_ENABLE = yes
 SERIAL_DRIVER = vendor
 LTO_ENABLE = no
 COMBO_ENABLE = yes
-//PS2_ENABLE = yes
-//PS2_DRIVER = vendor
-//POINTING_DEVICE_ENABLE = yes
-//PONTING_DEVICE_DRIVER = trackpoint
