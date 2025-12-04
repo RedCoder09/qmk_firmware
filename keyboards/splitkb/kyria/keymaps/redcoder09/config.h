@@ -17,6 +17,9 @@
 #pragma once
 
 // #define RGBLED_SPLIT { 6, 6 }
+#define RGB_MATRIX_DEFAULT_HUE 0    // Hue (0-255, but 0 works for white)
+#define RGB_MATRIX_DEFAULT_SAT 0    // Saturation (0 = white, 255 = full color)
+//#define RGB_MATRIX_DEFAULT_VAL 255  // Value/Brightness (0-255)
 #define NKRO_DEFAULT_ON true
 #define STENO_COMBINEDMAP
 #define MIDI_ADVANCED
