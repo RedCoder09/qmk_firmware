@@ -21,10 +21,10 @@
 #define RGB_MATRIX_DEFAULT_SAT 0    // Saturation (0 = white, 255 = full color)
 //#define RGB_MATRIX_DEFAULT_VAL 255  // Value/Brightness (0-255)
 #define NKRO_DEFAULT_ON true
-#define STENO_COMBINEDMAP
-#define MIDI_ADVANCED
+#define MK_KINETIC_SPEED true
 #define SERIAL_DEBUG
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#define HOLD_ON_OTHER_KEY_PRESS
 //#define SOFT_SERIAL_PIN GP1 (defined in keyboard.json)
 //#define SPLIT_USB_DETECT
 //#define SPLIT_WATCHDOG_ENABLE
