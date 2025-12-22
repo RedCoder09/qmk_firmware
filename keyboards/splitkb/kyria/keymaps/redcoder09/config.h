@@ -16,10 +16,9 @@
 
 #pragma once
 
-// #define RGBLED_SPLIT { 6, 6 }
 #define RGB_MATRIX_DEFAULT_HUE 0    // Hue (0-255, but 0 works for white)
 #define RGB_MATRIX_DEFAULT_SAT 0    // Saturation (0 = white, 255 = full color)
-//#define RGB_MATRIX_DEFAULT_VAL 255  // Value/Brightness (0-255)
+//#define RGB_MATRIX_DEFAULT_MODE mode
 #define NKRO_DEFAULT_ON true
 #define MK_KINETIC_SPEED true
 #define SERIAL_DEBUG
@@ -31,7 +30,7 @@
 #define MASTER_LEFT
 #define SPLIT_OLED_ENABLE
 #define OLED_DISPLAY_128X64
-#define ENABLE_RGB_MATRIX_SOLID_COLOR
+//#define ENABLE_RGB_MATRIX_SOLID_COLOR
 #define SPLIT_TRANSPORT_MIRROR
 #define SPLIT_LAYER_STATE_ENABLE
 #define SPLIT_MODS_ENABLE

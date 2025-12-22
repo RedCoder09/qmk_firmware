@@ -97,7 +97,7 @@ void keyboard_post_init_user(void) {
   //debug_mouse=true;
   // Call the post init code.
   rgb_matrix_enable(); // enables Rgb, without saving settings
-  //rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
+  rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
   //rgb_matrix_sethsv_noeeprom(HSV_OFF); // sets the color to teal/cyan without saving
 }
 
@@ -109,7 +109,6 @@ enum layers {
     _NUM,       // Numbers
     _SYM,       // Symbols
     _FUN,       // Function keys
-	_GAMING,
 	_STENO
 };
 
@@ -133,12 +132,6 @@ enum layers {
 #define SYM_ENT LT(_SYM, KC_ENT)
 #define FUN_DEL LT(_FUN, KC_DEL)
 #define MED_ESC LT(_MEDIA, KC_ESC)
-
-// left and right layer maps for conciseness
-#define BLANK_ROW \
-XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define LEFT_MODIFIERS \
-XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -164,7 +157,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //   |-------+--------+--------+--------+--------+--------+-----------------.  ,-------------------------+--------+--------+--------+--------+--------|
       KC_LSFT,  KC_Z  ,  KC_X  ,  KC_C  ,  KC_D  ,  KC_V  ,KC_LBRC ,KC_LPRN ,   KC_RPRN, KC_RBRC,  KC_K  ,  KC_H  ,KC_COMM , KC_DOT ,KC_SLSH ,KC_RSFT ,
 //   `----------------------------------+--------+--------+--------+--------|  |-------+--------+--------+--------+--------+--------------------------'
-                              TG(_STENO),XXXXXXX ,MED_ESC ,NAV_SPC ,MSE_TAB ,   SYM_ENT,NUM_BSPC,FUN_DEL ,XXXXXXX ,TG(_GAMING)
+                              TG(_STENO), EE_CLR ,MED_ESC ,NAV_SPC ,MSE_TAB ,   SYM_ENT,NUM_BSPC,FUN_DEL ,XXXXXXX ,XXXXXXX
 //                              `-------------------------------------------'  `-------------------------------------------'
     ),
 
@@ -293,27 +286,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, KC_F10,  KC_F1,   KC_F2,   KC_F3,   KC_PAUS, _______, _______,        _______, _______,      XXXXXXX, QK_LLCK, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                  _______, _______, KC_APP,  KC_SPC,  KC_TAB,         _______, _______,      _______, _______, _______
     ),
-	
-	/*
- * FUN LAYER - Function keys
- *
- * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        | F12  |  F7  |  F8  |  F9  |PrtScr|                              |      |      |      |      |      |        |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        | F11  |  F4  |  F5  |  F6  |ScrLck|                              |      |  ⇧   |  ⌃   |  ⎇   |  ⌘   |        |//inaccurate diagram
- * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        | F10  |  F1  |  F2  |  F3  | Pause|      |      |  |      |      |      |      |      |      |      |        |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        | Menu | Space| Tab  |      |      |  |      |      | ///  |      |      |
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
- */
-    [_GAMING] = LAYOUT(
-      KC_TAB  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,   KC_U ,  KC_I ,   KC_O ,  KC_P , KC_BSPC,
-     _______ , KC_A ,  KC_S   ,  KC_W  ,   KC_D ,   KC_G ,                                        KC_H,   KC_J ,  KC_K ,   KC_L ,KC_SCLN, _______,
-     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,KC_CAPS,     _______, KC_RBRC, KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
-                                _______, KC_LGUI, KC_SPC, KC_SPC , _______,     _______, KC_SPC ,KC_RALT, KC_RGUI, TG(_GAMING)
-    ),
 
 /*
  * STENO LAYER - Stenography via Gemini PR
@@ -359,29 +331,31 @@ bool oled_task_user(void) {
     }
     return false;
 }
+#endif
 
+#ifdef RGB_MATRIX_ENABLE
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (get_highest_layer(state)) {
         case _BASE:
-            rgb_matrix_sethsv(HSV_WHITE);
+            rgb_matrix_sethsv_noeeprom(HSV_WHITE);
             break;
         case _NAV:
-            rgb_matrix_sethsv(HSV_CYAN);
+            rgb_matrix_sethsv_noeeprom(HSV_CYAN);
             break;
         case _MOUSE:
-            rgb_matrix_sethsv(HSV_YELLOW);
+            rgb_matrix_sethsv_noeeprom(HSV_YELLOW);
             break;
         case _NUM:
-            rgb_matrix_sethsv(HSV_BLUE);
+            rgb_matrix_sethsv_noeeprom(HSV_BLUE);
             break;
         case _SYM:
-            rgb_matrix_sethsv(HSV_GREEN);
+            rgb_matrix_sethsv_noeeprom(HSV_GREEN);
             break;
         case _FUN:
-            rgb_matrix_sethsv(HSV_RED);
+            rgb_matrix_sethsv_noeeprom(HSV_RED);
             break;
         case _MEDIA:
-            rgb_matrix_sethsv(HSV_MAGENTA);
+            rgb_matrix_sethsv_noeeprom(HSV_MAGENTA);
             break;
     }
     return state;
