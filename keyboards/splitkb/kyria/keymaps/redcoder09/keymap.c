@@ -135,51 +135,28 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/*
- * BASE LAYER - Colemak-DH
- *
- * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Tab   |   Q  |   W  |   F  |   P  |   B  |                              |   J  |   L  |   U  |   Y  | ;  : |  \  |  |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |  Esc   | A/⌘ | R/⎇  | S/⌃  | T/⇧ |   G  |                              |   M  | N/⇧  | E/⌃  | I/⎇  | O/⌘  |  '  " |
- * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   D  |   V  |  [   |  (   |  |   )  |  ]   |   K  |   H  | ,  < | . >  | /  ? | RShift |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |MedESC| NavSP|MseTAB|  |SymEnt|NumBSP|FunDel|      |      |
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
- */
     [_BASE] = LAYOUT(
-//   ,-------+--------+--------+--------+--------+--------.                                      ,-------+--------+--------+--------+--------+--------.
-      KC_TAB ,  KC_Q  ,  KC_W  ,  KC_F  ,  KC_P  ,  KC_B  ,                                        KC_J  ,  KC_L  ,  KC_U  ,  KC_Y  ,KC_QUOT ,KC_BSLS ,
-//   |-------+--------+--------+--------+--------+--------|                                      |-------+--------+--------+--------+--------+--------|
-      KC_ESC , HOME_A , HOME_R , HOME_S , HOME_T ,  KC_G  ,                                        KC_M  , HOME_N , HOME_E , HOME_I , HOME_O ,KC_QUOT ,
-//   |-------+--------+--------+--------+--------+--------+-----------------.  ,-------------------------+--------+--------+--------+--------+--------|
-      KC_LSFT,  KC_Z  ,  KC_X  ,  KC_C  ,  KC_D  ,  KC_V  ,KC_LBRC ,KC_LPRN ,   KC_RPRN, KC_RBRC,  KC_K  ,  KC_H  ,KC_COMM , KC_DOT ,KC_SLSH ,KC_RSFT ,
-//   `----------------------------------+--------+--------+--------+--------|  |-------+--------+--------+--------+--------+--------------------------'
-                              TG(_STENO), EE_CLR ,MED_ESC ,NAV_SPC ,MSE_TAB ,   SYM_ENT,NUM_BSPC,FUN_DEL ,XXXXXXX ,XXXXXXX
-//                              `-------------------------------------------'  `-------------------------------------------'
+//   ,--------+--------+--------+--------+--------+--------.                                      ,--------+--------+--------+--------+--------+--------.
+       KC_TAB ,  KC_Q  ,  KC_W  ,  KC_F  ,  KC_P  ,  KC_B  ,                                         KC_J  ,  KC_L  ,  KC_U  ,  KC_Y  ,KC_QUOT ,KC_BSLS ,
+//   |--------+--------+--------+--------+--------+--------|                                      |--------+--------+--------+--------+--------+--------|
+       KC_ESC , HOME_A , HOME_R , HOME_S , HOME_T ,  KC_G  ,                                         KC_M  , HOME_N , HOME_E , HOME_I , HOME_O ,KC_QUOT ,
+//   |--------+--------+--------+--------+--------+--------+-----------------.  ,-----------------+--------+--------+--------+--------+--------+--------|
+      KC_LSFT ,  KC_Z  ,  KC_X  ,  KC_C  ,  KC_D  ,  KC_V  ,KC_LBRC ,KC_LPRN ,   KC_RPRN ,KC_RBRC ,  KC_K  ,  KC_H  ,KC_COMM , KC_DOT ,KC_SLSH ,KC_RSFT ,
+//   `-----------------------------------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------------------------'
+                               TG(_STENO), EE_CLR ,MED_ESC ,NAV_SPC ,MSE_TAB ,   SYM_ENT ,NUM_BSPC,FUN_DEL ,XXXXXXX ,XXXXXXX
+//                              `--------------------------------------------'  `--------------------------------------------'
     ),
-
-/*
- * NAV LAYER - Navigation and editing
- *
- * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |      |      |      |                              | Redo | Paste| Copy | Cut  | Undo |        |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |  ⌘   |  ⎇   |  ⌃   |  ⇧   |      |                            | Caps | Left | Down |  Up  | Right |       | //inaccurate diagram
- * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |      |  |      |      | Home | PgDn | PgUp | End  | Ins  |        |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      | ///  |      |  |      | Enter| Bkspc| Del  |      |
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
- */
-    [_NAV] = LAYOUT(
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                 C(KC_Y), KC_PSTE, KC_COPY, KC_CUT, C(KC_Z), _______,
-      XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                                                 KC_CAPS, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_LLCK, XXXXXXX, _______, _______,        _______,  _______,     KC_INS,  KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,
-                                 _______, _______, _______, _______, _______,        KC_ENT,   KC_BSPC,     KC_DEL,  _______, _______
+	
+	[_NAV] = LAYOUT(
+//   ,--------+--------+--------+--------+--------+--------.                                      ,--------+--------+--------+--------+--------+--------.
+      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,                                       C(KC_Y) ,KC_PSTE ,KC_COPY , KC_CUT ,C(KC_Z) ,_______ ,
+//   |--------+--------+--------+--------+--------+--------|                                      |--------+--------+--------+--------+--------+--------|
+      XXXXXXX ,KC_LGUI ,KC_LALT ,KC_LCTL ,KC_LSFT ,XXXXXXX ,                                       KC_CAPS ,KC_LEFT ,KC_DOWN , KC_UP  ,KC_RGHT ,_______ ,
+//   |--------+--------+--------+--------+--------+--------+-----------------.  ,-----------------+--------+--------+--------+--------+--------+--------|
+      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,QK_LLCK ,XXXXXXX ,_______ ,_______ ,   _______ ,_______ , KC_INS ,KC_HOME ,KC_PGDN ,KC_PGUP , KC_END ,_______ ,
+//   `-----------------------------------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------------------------'
+                                 _______ ,_______ ,_______ ,_______ ,_______ ,    KC_ENT ,KC_BSPC , KC_DEL ,_______ ,_______
+//                              `--------------------------------------------'  `--------------------------------------------'
     ),
 
 /*
@@ -310,6 +287,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	
 };
 
+#ifdef POINTING_DEVICE_ENABLE
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    // Pointing device code only runs on master/left
+    return mouse_report;
+}
+#endif
+
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_180; }
 
@@ -318,16 +302,8 @@ static void render_logo(void) {
 }
 
 bool oled_task_user(void) {
-    static uint8_t last_layer = 255;
-    uint8_t current_layer = get_highest_layer(layer_state);
-    
-    if (last_layer != current_layer) {
-		if (is_keyboard_master()) {
-			render_logo();
-		} else {
-			render_logo();
-		}
-        last_layer = current_layer;
+    if (!is_keyboard_master()) {
+        render_logo();
     }
     return false;
 }
